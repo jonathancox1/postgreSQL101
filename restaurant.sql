@@ -42,3 +42,28 @@ inner join review
 on reviewer.id = reviewer_id
 group by reviewer_name;
 
+--inner join with minimum step 9
+select reviewer.reviewer_name, min(review.stars)
+from review
+inner join reviewer
+on reviewer.id = review.reviewer_id
+group by reviewer.reviewer_name;
+
+--select count step 10
+select count (restaurant.category), restaurant.category
+from restaurant
+group by restaurant.category;
+
+--inner join with constraint step 11
+select restaurant.restaurant_name, review.stars
+from restaurant
+inner join review
+on restaurant.id = review.restaurant_id
+where review.stars = 5;
+
+--inner join, average and group by step 12
+select restaurant.category, avg(stars) as average_stars
+from restaurant
+inner join review
+on restaurant.id = review.restaurant_id
+group by restaurant.category;
